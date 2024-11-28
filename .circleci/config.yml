@@ -27,7 +27,8 @@ jobs:
       - image: cimg/base:current
     steps:
       - run: "printenv"
-      - run: echo $CIRCLE_OIDC_TOKEN
+      - run: echo $CIRCLE_OIDC_TOKEN > OIDC_TOKEN
+      - run: cat OIDC_TOKEN
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
