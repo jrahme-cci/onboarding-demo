@@ -21,6 +21,12 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - run: "printenv"
+  say-goodbye:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - run: "printenv"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
@@ -29,3 +35,6 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - say-hello
+      - say-goodbye:
+          context:
+            - org_global
